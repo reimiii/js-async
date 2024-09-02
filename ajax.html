@@ -10,13 +10,20 @@
 
     const ajax = new XMLHttpRequest();
     ajax.open("GET", "api/hello.json");
-    ajax.addEventListener("load", function () {
-        const json = JSON.parse(ajax.responseText);
-
-        const header = document.getElementById("response");
-        header.textContent = json.response;
-    });
     ajax.send();
+
+    const callback = () => {
+        const parse = JSON.parse(ajax.responseText);
+        console.info(parse.response)
+    }
+
+    ajax.onload = callback;
+    // ajax.addEventListener("load", function () {
+    //     const json = JSON.parse(ajax.responseText);
+    //
+    //     const header = document.getElementById("response");
+    //     header.textContent = json.response;
+    // });
 
 </script>
 </body>
