@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Async</title>
+</head>
+<body>
+<script>
+
+    // Promise<String>
+    function getNamePromise() {
+        return new Promise(function (resolve, reject) {
+            setTimeout(() => {
+                console.log("Ini 2 detik kemudian (non-blocking) with Promise object");
+                resolve("ME Promise");
+            }, 2000);
+
+        });
+    }
+
+    // Promise<String>
+    async function getNameAsync() {
+        setTimeout(() => {
+            console.log("Ini 2 detik kemudian (non-blocking) di async keyword");
+        }, 2000);
+        return "Me Async";
+    }
+
+    getNamePromise()
+        .then((name) => console.info(name));
+
+    getNameAsync()
+        .then((name) => console.info(name));
+
+    console.info("jalan duluan")
+</script>
+</body>
+</html>
